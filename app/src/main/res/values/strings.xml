@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">mvp</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_home">Home</string>
+    <string name="title_news">News</string>
+    <string name="title_history">History</string>
+    <string name="title_profile">Profile</string>
+    <string name="buy">Buy</string>
+    <string name="clear_search">clear</string>
+    <string name="cancel2">Cancel</string>
+    <string name="search">Ketikkan sesuatu</string>
+    <string name="cd_ic_search">search</string>
+    <string name="login">Login</string>
+    <string name="login_option">Atau</string>
+    <string name="cd_btn_google">google</string>
+    <string name="cd_btn_facebook">facebook</string>
+    <string name="header_search_placeholder">Cari</string>
 </resources>

@@ -1,26 +1,18 @@
 package com.maro.baseproject.data.db
-
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import com.maro.baseproject.R
-import kotlin.reflect.KProperty
 
 /**
  * Created by Wanhar on 22/06/19.
  * Email : Wanhardaengmaro@gmail.com
  */
-object LocalPref {
+class LocalPref(val context: Context){
     private val SETTINGS_NAME = R.string.app_name.toString()
     lateinit var prefs: SharedPreferences
-    private lateinit var sSharedPrefs: LocalPref
 
-    fun getInstance(context: Context): SharedPreferences{
-        prefs = context.getSharedPreferences(SETTINGS_NAME, Context.MODE_PRIVATE)
-        return prefs
-    }
-
-    fun getValue(key:Key, defaultValue: Any) {
+    fun getValue(key:Key, defaultValue: Any): Any {
         return findPreferences(key, defaultValue)
     }
 
@@ -34,7 +26,8 @@ object LocalPref {
     }
 
     @Suppress("UNCHECKED_CAST")
-    private fun findPreferences(key: Key, defaultValue: Any) {
+    private fun findPreferences(key: Key, defaultValue: Any): Any {
+        prefs = context.getSharedPreferences(SETTINGS_NAME, Context.MODE_PRIVATE)
         with(prefs)
         {
             val result: Any = when (defaultValue) {
@@ -44,13 +37,14 @@ object LocalPref {
                 is Float -> getFloat(key.name, defaultValue)
                 is String -> getString(key.name, defaultValue)
                 else -> throw IllegalArgumentException()
-            }
-            return result as Unit
+            }!!
+            return result
         }
     }
 
     @SuppressLint("CommitPrefEdits")
     private fun savePreference(key: Key, value: Any) {
+        prefs = context.getSharedPreferences(SETTINGS_NAME, Context.MODE_PRIVATE)
         with(prefs.edit())
         {
             when (value) {
@@ -68,4 +62,5 @@ object LocalPref {
     enum class Key{
         LOGIN
     }
+
 }

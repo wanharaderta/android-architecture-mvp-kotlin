@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#51bcd6</color>
+    <color name="colorPrimaryDark">#40abc5</color>
+    <color name="colorAccent">#5983f0</color>
+    <color name="colorTextPrimary">#565656</color>
+    <color name="colorTextSecondary">#b6b6b6</color>
+    <color name="colorBackground">#f3f7fb</color>
+
+    <color name="denim_blue_opacity_60">#99334680</color>
 </resources>

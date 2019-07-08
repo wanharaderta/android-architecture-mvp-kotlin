@@ -1,6 +1,5 @@
 package com.maro.baseproject.deps.component
 
-import android.app.Application
 import androidx.multidex.MultiDexApplication
 import com.maro.baseproject.BaseApp
 import com.maro.baseproject.deps.module.ActivityModule
@@ -8,7 +7,7 @@ import com.maro.baseproject.deps.module.AppModule
 import com.maro.baseproject.deps.module.NetworkModule
 import dagger.BindsInstance
 import dagger.Component
-import dagger.android.support.AndroidSupportInjectionModule
+import dagger.android.AndroidInjectionModule
 import javax.inject.Singleton
 
 /**
@@ -20,7 +19,7 @@ import javax.inject.Singleton
     AppModule::class,
     NetworkModule::class,
     ActivityModule::class,
-    AndroidSupportInjectionModule::class
+    AndroidInjectionModule::class
 ])
 interface ApplicationComponent {
 
@@ -29,9 +28,10 @@ interface ApplicationComponent {
         fun build(): ApplicationComponent
 
         @BindsInstance
-        fun application(application: Application): Builder
+        fun application(application: MultiDexApplication): Builder
     }
 
     fun inject(application: BaseApp)
 
 }
+

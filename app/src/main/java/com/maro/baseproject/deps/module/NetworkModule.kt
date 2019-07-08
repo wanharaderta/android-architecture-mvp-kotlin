@@ -9,7 +9,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Singleton
 
 /**
  * Created by Wanhar on 22/06/19.
@@ -30,13 +29,13 @@ class NetworkModule {
         okHttpBuilder.addInterceptor {
             val request = it.request()
             val url = request.url().newBuilder()
-                .addQueryParameter("", "")
+               // .addQueryParameter("", "")
                 .build()
             it.proceed(request.newBuilder().url(url).build())
         }
 
         return Retrofit.Builder()
-            .baseUrl("")
+            .baseUrl(BuildConfig.ENDPOINT_DEFAULT)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpBuilder.build())

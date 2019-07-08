@@ -1,8 +1,8 @@
 package com.maro.baseproject.api
 
+import com.maro.baseproject.data.remote.ProductResponse
 import io.reactivex.Observable
 import retrofit2.http.GET
-import retrofit2.http.Query
 
 /**
  * Created by Wanhar on 22/06/19.
@@ -10,6 +10,6 @@ import retrofit2.http.Query
  */
 interface ApiService {
 
-    @GET("account/reset_pass")
-    fun resetPassword(@Query("email") email: String): Observable<String>
+    @GET("home")
+    fun getListData(): Observable<List<ProductResponse>>
 }

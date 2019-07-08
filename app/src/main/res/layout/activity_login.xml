@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/spacing_normal"
+                android:paddingTop="@dimen/spacing_normal"
+                android:paddingRight="@dimen/spacing_normal"
+                android:paddingBottom="@dimen/spacing_normal">
+
+    <RelativeLayout
+            android:id="@+id/dummy_focus"
+            android:layout_width="0px"
+            android:layout_height="0px"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/input_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:hint="Email"
+            android:nextFocusLeft="@id/input_email"
+            android:nextFocusUp="@id/input_email"
+            android:paddingBottom="@dimen/spacing_normal"
+            android:textColor="@color/colorTextPrimary"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:textSize="16sp"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/input_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:layout_below="@+id/input_email"
+            android:hint="Password"
+            android:paddingStart="0dp"
+            android:paddingLeft="0dp"
+            android:paddingEnd="30dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="@dimen/spacing_normal"
+            android:textColor="@color/colorTextPrimary"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:textSize="16sp"/>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_login"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="250dp"
+            android:layout_height="44dp"
+            android:layout_below="@id/input_password"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/bg_btn_primary_normal_new"
+            android:elevation="0dp"
+            android:foreground="?attr/selectableItemBackground"
+            android:letterSpacing="0.2"
+            android:text="@string/login"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_login_option"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_login"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:text="@string/login_option"
+            android:textColor="@color/colorTextSecondary"
+            android:textSize="16sp"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_login_option"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+        <ImageButton
+                android:id="@+id/btn_signin_google"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/cd_btn_google"
+                android:src="@mipmap/btn_google_signin_light_normal_web"/>
+
+        <ImageButton
+                android:id="@+id/btn_signin_facebook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/cd_btn_facebook"
+                android:foreground="?selectableItemBackground"
+                android:src="@mipmap/btn_google_signin_light_normal_web_copy"/>
+    </LinearLayout>
+
+  <!--  <com.facebook.login.widget.LoginButton
+            android:id="@+id/btn_facebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_login_option"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:visibility="gone"/>-->
+
+</RelativeLayout>
