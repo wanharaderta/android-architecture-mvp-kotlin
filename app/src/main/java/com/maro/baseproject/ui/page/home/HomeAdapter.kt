@@ -21,9 +21,9 @@ import kotlinx.android.synthetic.main.item_product.view.*
  * Email : Wanhardaengmaro@gmail.com
  */
 class HomeAdapter(
-        val type: Int,
-        var homeListener: OnItemClickListener?,
-        val list: ProductResponse
+    val type: Int,
+    var homeListener: OnItemClickListener?,
+    val list: ProductResponse?
 ) : RecyclerView.Adapter<HomeAdapter
 .ViewHolder>() {
 
@@ -56,17 +56,19 @@ class HomeAdapter(
 
     override fun getItemCount() : Int {
         if(type == 1)
-            size = list.data?.category?.size!!
+            size = list?.data?.category?.size!!
         else
-            size = list.data?.productPromo?.size!!
+            if (list != null) {
+                size = list.data?.productPromo?.size!!
+            }
         return size
     }
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         when (holder.itemViewType) {
-            CATEGORY_TYPE -> holder.bindViewCategories(list.data?.category?.get(position),homeListener)
-            PRODUCT_TYPE -> holder.bindViewProduct(list.data?.productPromo?.get(position),homeListener)
+            CATEGORY_TYPE -> holder.bindViewCategories(list?.data?.category?.get(position),homeListener)
+            PRODUCT_TYPE -> holder.bindViewProduct(list?.data?.productPromo?.get(position),homeListener)
         }
     }
 
