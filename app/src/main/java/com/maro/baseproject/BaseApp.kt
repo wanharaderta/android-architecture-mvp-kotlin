@@ -3,6 +3,8 @@ package com.maro.baseproject
 import android.app.Activity
 import android.app.Application
 import androidx.multidex.MultiDexApplication
+import com.google.firebase.FirebaseApp
+import com.maro.baseproject.api.RealmService
 import com.maro.baseproject.deps.component.ApplicationComponent
 import com.maro.baseproject.deps.component.DaggerApplicationComponent
 import dagger.Component
@@ -25,12 +27,8 @@ class BaseApp : MultiDexApplication(), HasActivityInjector {
     override fun onCreate() {
         super.onCreate()
 
-        Realm.init(this)
-        val realmConfiguration = RealmConfiguration.Builder()
-            .schemaVersion(1)
-            .deleteRealmIfMigrationNeeded()
-            .build()
-        Realm.setDefaultConfiguration(realmConfiguration)
+        RealmService.initDatabase(this)
+        FirebaseApp.initializeApp(this)
 
         DaggerApplicationComponent.builder()
             .application(this)

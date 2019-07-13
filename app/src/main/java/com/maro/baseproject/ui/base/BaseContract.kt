@@ -5,12 +5,13 @@ package com.maro.baseproject.ui.base
  * Email : Wanhardaengmaro@gmail.com
  */
 interface BaseContract {
+    interface View {
+        fun showLoading()
+        fun hideLoading()
+    }
+
     interface Presenter<in T> {
         fun unsubscribe()
-        fun attach(view: T)
     }
 
-    interface View {
-
-    }
 }

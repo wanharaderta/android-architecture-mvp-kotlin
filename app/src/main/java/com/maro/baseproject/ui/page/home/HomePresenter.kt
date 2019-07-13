@@ -23,7 +23,7 @@ class HomePresenter @Inject constructor(
 
     override fun getListData() {
         view.showDialog()
-        val subscribe = api.getListData().subscribeOn(Schedulers.io())
+        subscriptions.add(api.getListData().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ response: List<ProductResponse> ->
                 view.showListData(response[0])
@@ -31,7 +31,11 @@ class HomePresenter @Inject constructor(
             }, { error ->
                 view.hideDialog()
                 view.showErrorMessage(error.localizedMessage)
-            })
-        subscriptions.add(subscribe)
+            }))
     }
+
+    override fun unsubscribe() {
+        subscriptions.clear()
+    }
+
 }

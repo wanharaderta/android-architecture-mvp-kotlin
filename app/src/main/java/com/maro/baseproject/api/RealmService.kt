@@ -1,7 +1,9 @@
 package com.maro.baseproject.api
 
+import android.content.Context
 import com.maro.baseproject.data.local.ProductPromo
 import io.realm.Realm
+import io.realm.RealmConfiguration
 import io.realm.RealmResults
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
@@ -13,14 +15,22 @@ import io.realm.kotlin.where
  */
 class RealmService(private val mRealm: Realm) {
 
+    companion object{
+        fun initDatabase(context: Context){
+            Realm.init(context)
+            val realmConfiguration = RealmConfiguration.Builder()
+                .schemaVersion(1)
+                .deleteRealmIfMigrationNeeded()
+                .build()
+            Realm.setDefaultConfiguration(realmConfiguration)
+        }
+    }
+
     val allHistorys: RealmResults<ProductPromo>
         get() = mRealm.where<ProductPromo>().findAll()
 
     fun isProductExist(id: String): Boolean {
-        return if (mRealm.where<ProductPromo>().equalTo("id", id).count() > 0)
-            false
-        else
-            true
+        return mRealm.where<ProductPromo>().equalTo("id", id).count() <= 0
     }
     fun addHistoryAsync(productPromo: ProductPromo){
         mRealm.executeTransaction {
