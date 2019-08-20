@@ -15,21 +15,20 @@ import javax.inject.Inject
 
 class HomePresenter @Inject constructor(
     val view: HomeContract.View,
-    val api: ApiService,
-    val localpref: LocalPref
+    val api: ApiService
 ) : HomeContract.Presenter {
 
     private val subscriptions = CompositeDisposable()
 
     override fun getListData() {
-        view.showDialog()
+        view.showLoading()
         subscriptions.add(api.getListData().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ response: List<ProductResponse> ->
                 view.showListData(response[0])
-                view.hideDialog()
+                view.hideLoading()
             }, { error ->
-                view.hideDialog()
+                view.hideLoading()
                 view.showErrorMessage(error.localizedMessage)
             }))
     }
