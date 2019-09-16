@@ -30,11 +30,11 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector, MainContract.Vi
         AndroidInjection.inject(this)
         setContentView(R.layout.activity_main)
 
-        changeFragment(supportFragmentManager,HomeFragment().newInstance(),R.id.frame,HomeFragment.TAG,true)
+        changeFragment(supportFragmentManager,HomeFragment.newInstance(),R.id.frame,HomeFragment.TAG,true)
         navigation.setOnNavigationItemSelectedListener{item ->
             when(item.itemId){
                 R.id.navigation_home -> {
-                    changeFragment(supportFragmentManager,HomeFragment().newInstance(),R.id.frame,HomeFragment.TAG,true)
+                    changeFragment(supportFragmentManager,HomeFragment.newInstance(),R.id.frame,HomeFragment.TAG,true)
                 }
                 R.id.navigation_news -> {
 
